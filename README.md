@@ -16,8 +16,8 @@ This project is a Python web scraper designed to extract information about gas s
 ### Step 1: Clone the Repository
 First, clone this repository to your local machine:
 ```bash
-git clone https://github.com/yourusername/gas-station-scraper.git
-cd gas-station-scraper
+git clone https://github.com/bjvta/gas_availability_scraper.git
+cd gas_availability_scraper
 ```
 
 ### Step 2: Set Up a Virtual Environment
