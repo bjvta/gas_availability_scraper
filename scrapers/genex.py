@@ -1,5 +1,6 @@
 from scrapers.base import PumpBaseScraper
 from bs4 import BeautifulSoup
+import datetime
 
 
 class GenexPumpScraper(PumpBaseScraper):
@@ -48,10 +49,19 @@ class GenexPumpScraper(PumpBaseScraper):
             have_gas = have_gas_div.get_text(strip=True) if have_gas_div else "N/A"
 
             gas_station_data = {
-                "Gas Station": station_name,
-                "Address": station_address,
-                "Last Update": last_update,
-                "Have Gas": have_gas,
+                "pump_name": self.page_type,
+                "station_name": station_name,
+                "availability": None,
+                "last_measurement": last_update,
+                "latlng": None,
+                "location_text": station_address,
+                "town": None,
+                "canton": None,
+                "province": "Santa Cruz de la Sierra",
+                "department": "Santa Cruz",
+                "city": "Santa Cruz",
+                "timestamp": datetime.datetime.now().isoformat(),
+                "product": "Especial+",
             }
             gas_stations.append(gas_station_data)
 

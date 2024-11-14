@@ -1,6 +1,6 @@
 from scrapers.base import PumpBaseScraper
 from bs4 import BeautifulSoup
-
+import datetime
 
 class BiopetrolPumpScraper(PumpBaseScraper):
     def parse(self):
@@ -38,10 +38,19 @@ class BiopetrolPumpScraper(PumpBaseScraper):
             location = location_div.get_text(strip=True) if location_div else "N/A"
 
             gas_station_data = {
-                "Gas Station": title,
-                "Availability": litros_value,
-                "Last measurement": hora_value,
-                "Location": location,
+                "pump_name": self.page_type,
+                "station_name": title,
+                "availability": litros_value,
+                "last_measurement": hora_value,
+                "latlng": None,
+                "location_text": location,
+                "town": None,
+                "canton": None,
+                "province": "Santa Cruz de la Sierra",
+                "department": "Santa Cruz",
+                "city": "Santa Cruz",
+                "timestamp": datetime.datetime.now().isoformat(),
+                "product": "Especial+",
             }
 
             gas_stations.append(gas_station_data)
